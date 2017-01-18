@@ -18,19 +18,17 @@ def lis_quick_search(array):
     import bisect
 
     length = len(array)
-    memo = [length + 1] * length
-    index_to_len = {}
+    memo = [0] * length
     longest_len = 0
 
     for number in array:
-        i = bisect.bisect_left(memo, number)
+        i = bisect.bisect_left(memo, number, 0, longest_len)
         if i:
-            new_len = index_to_len[i - 1] + 1
+            new_len = i + 1
         else:
             new_len = 1
 
         longest_len = max(longest_len, new_len)
-        index_to_len[i] = new_len
         memo[i] = number
 
     return longest_len
