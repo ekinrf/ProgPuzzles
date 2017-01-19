@@ -1,26 +1,26 @@
 def frac_to_dec(numerator, denominator):
     fracs = []
-    remainders = []
+    remainders = {}  # num -> index in fracs
 
     def div(dividend, divisor):
-        _whole = int(dividend / divisor)
-        _remainder = dividend - (_whole * divisor)
-        return _whole, _remainder * 10
+        _quotient = int(dividend / divisor)
+        _remainder = dividend - (_quotient * divisor)
+        return _quotient, _remainder * 10
 
     def iterate(numer, denom):
         if numer in remainders:
-            i = remainders.index(numer)
+            i = remainders[numer]
             return i, True
         else:
-            whole, remainder = div(numer, denom)
-            remainders.append(numer)
-            fracs.append(whole)
-            if remainder:
-                return iterate(remainder, denom)
+            _quotient, _remainder = div(numer, denom)
+            remainders[numer] = len(fracs)
+            fracs.append(_quotient)
+            if _remainder:
+                return iterate(_remainder, denom)
             else:
                 return len(fracs), False
 
-    def stringfy(nums):
+    def stringify(nums):
         recurring = nums[1]
         index = nums[0]
         ret = ""
@@ -39,13 +39,14 @@ def frac_to_dec(numerator, denominator):
     if numerator * denominator < 0:
         return "-" + frac_to_dec(abs(numerator), abs(denominator))
     if denominator:
-        whole, remainder = div(numerator, denominator)
-        if whole:
-            if remainder:
-                return str(whole) + "." + stringfy(iterate(remainder, denominator))
-            else:
-                return str(whole)
+        quotient, remainder = div(numerator, denominator)
+        if remainder:
+            return str(quotient) + "." + stringify(iterate(remainder, denominator))
         else:
-            return "0." + stringfy(iterate(remainder, denominator))
+            return str(quotient)
 
 print(frac_to_dec(-50, 8))
+print(frac_to_dec(4, 333))
+print(frac_to_dec(0, 8))
+print(frac_to_dec(2, 1))
+print(frac_to_dec(1, 5))
