@@ -27,3 +27,30 @@ def traverse_and_validate(cur, prev): #, visit_stack):
 def validate_bst(root):
     valid, biggest = traverse_and_validate(root, None)
     return valid
+
+
+def bottom_right(root):
+    if root.right:
+        return bottom_right(root.right)
+    else:
+        return root
+
+
+def bottom_left(root):
+    if root.left:
+        return bottom_left(root.left)
+    else:
+        return root
+
+
+def validate_bst_rec(root):
+    if root is None:
+        return True
+    if validate_bst_rec(root.left) and validate_bst_rec(root.right):
+        if root.left and bottom_right(root.left).val >= root.val:
+            return False
+        if root.right and bottom_left(root.right).val <= root.val:
+            return False
+        return True
+    else:
+        return False
