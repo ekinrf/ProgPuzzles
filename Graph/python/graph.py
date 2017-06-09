@@ -44,27 +44,21 @@ def dfs_norec(graph):
                 break
 
 
-def bfs_graph(graph):
+def bfs(graph):
     visited = set()
     queue = deque()
     queue.append('A')
+    visited.add('A')
     while len(queue):
-        cur_vertex = queue[0]
-        if cur_vertex not in visited:
-            visited.add(cur_vertex)
-            visit(cur_vertex)
-        has_unvisited = False
+        cur_vertex = queue.popleft()
+        visit(cur_vertex)
+        visited.add(cur_vertex)
         for endpoint in graph.ve[cur_vertex]:
             if endpoint not in visited:
-                has_unvisited = True
-                visit(endpoint)
-                visited.add(endpoint)
                 queue.append(endpoint)
-        if not has_unvisited:
-            queue.popleft()
 
 
 graph = GraphAdList(defaultdict(list, {'A': ['B', 'C', 'D'], 'B': ['F'], 'F': ['A'], 'C': ['H'], 'D' : ['G'], 'H': ['K']}))
 #dfs_graph(graph)
 #dfs_norec(graph)
-bfs_graph(graph)
+bfs(graph)
