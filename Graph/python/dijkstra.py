@@ -1,6 +1,5 @@
-from python.graph import GraphAdList
+from graph import GraphAdList
 import heapq
-
 
 # graph is an adjacent list
 def shortest_path(ori, dst, graph):
@@ -33,7 +32,7 @@ def shortest_path(ori, dst, graph):
     return shortest_to
 
 
-graph = GraphAdList(None, True)
+graph = GraphAdList(None)
 graph.add_edge(0, 1, 4)
 graph.add_edge(0, 7, 8)
 graph.add_edge(1, 2, 8)
@@ -48,4 +47,4 @@ graph.add_edge(5, 6, 2)
 graph.add_edge(6, 7, 1)
 graph.add_edge(6, 8, 6)
 graph.add_edge(7, 8, 7)
-print(shortest_path(0, 3, graph))
+print(shortest_path(0, 6, graph))

@@ -2,7 +2,7 @@ from collections import defaultdict, deque
 
 
 class GraphAdList:
-    def __init__(self, ve=None, undirected = False):
+    def __init__(self, ve=None, undirected=False):
         if ve:
             self.ve = ve
         else:

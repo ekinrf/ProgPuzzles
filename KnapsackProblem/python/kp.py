@@ -1,6 +1,5 @@
 # stones is a set of tuples with (weight, value)
 
-
 # Unbounded KP. Why greedy does not work??
 # Python’s default arguments are evaluated once when the function is defined, not each time the function is called
 def kp(weight_limit, stones, kp_cache=None):
@@ -26,12 +25,12 @@ def kp_01(weight_limit, stones, kp_cache=None):
         kp_cache = defaultdict(dict)
     if weight_limit <= 0 or not stones:
         return 0
-    elif len(stones) not in kp_cache[weight_limit]:
-        stones_left = len(stones)
+    stones_left = len(stones)
+    if len(stones) not in kp_cache[weight_limit]:
         last_stone = stones[-1]
-        kp_cache[weight_limit][stones_left] = max(kp_01(weight_limit, stones[:-1]),
-                                                  kp_01(weight_limit - last_stone[0], stones[:-1]) + last_stone[1]
-                                                  if weight_limit - last_stone[0] >= 0 else 0)
+        kp_cache[weight_limit][stones_left] = max(kp_01(weight_limit, stones[:-1], kp_cache),
+                                                  kp_01(weight_limit - last_stone[0], stones[:-1], kp_cache)
+                                                  + last_stone[1] if weight_limit - last_stone[0] >= 0 else 0)
     return kp_cache[weight_limit][stones_left]
 
 
