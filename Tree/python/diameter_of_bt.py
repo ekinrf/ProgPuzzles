@@ -1,4 +1,4 @@
-from bst_validator import bfs_list_to_binary_tree
+from tree import list_to_btree
 
 
 # max of the all sub trees: (left depth + right depth)
@@ -23,12 +23,12 @@ def diameter_of_binary_tree(tree):
 
 
 if __name__ == '__main__':
-    a = bfs_list_to_binary_tree([3, 1, None, None, 2])
+    a = list_to_btree([3, 1, None, None, 2])
     print(diameter_of_binary_tree(a))
 
-    b = bfs_list_to_binary_tree([1, 2, 3, 4, 5])
+    b = list_to_btree([1, 2, 3, 4, 5])
     print(diameter_of_binary_tree(b))
 
-    c = bfs_list_to_binary_tree([4, -7, -3, None, None, -9, -3, 9, -7, -4, None, 6, None, -6, -6, None, None, 0, 6, 5,
-                                 None, 9, None, None, -1, -4, None, None, None, -2])
+    c = list_to_btree([4, -7, -3, None, None, -9, -3, 9, -7, -4, None, 6, None, -6, -6, None, None, 0, 6, 5,
+                       None, 9, None, None, -1, -4, None, None, None, -2])
     print(diameter_of_binary_tree(c))

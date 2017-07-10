@@ -1,4 +1,4 @@
-from bst_validator import bfs_list_to_binary_tree
+from tree import bfs_list_to_binary_tree
 
 
 def del_bst_node(root, tar_key):
