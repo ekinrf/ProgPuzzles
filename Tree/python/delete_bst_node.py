@@ -54,4 +54,6 @@ def del_bst_node(root, tar_key):
 
 if __name__ == '__main__':
     tree = bfs_list_to_binary_tree([5, 3, 6, 2, 4, None, 7])
-    print(del_bst_node(tree, 3))
+    # tree.visualise()
+    tree = del_bst_node(tree, 3)
+    tree.visualise()

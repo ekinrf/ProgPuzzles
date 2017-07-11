@@ -16,10 +16,25 @@ class BinaryTreeNode(object):
         return max(1, left_h, right_h)
 
     def visualise(self):
-        height = self.height()
+        def jump_to(x, y):
+            t.penup()
+            t.goto(x, y)
+            t.pendown()
+
+        def draw(node, x, y, dx):
+            if node:
+                t.goto(x, y)
+                jump_to(x, y - 20)
+                t.write(node.val, align='center', font=('Arial', 12, 'normal'))
+                draw(node.left, x - dx, y - 40, dx / 2)
+                jump_to(x, y - 20)
+                draw(node.right, x + dx, y - 40, dx / 2)
+
+        h = self.height()
         t = turtle.Turtle()
-        t.write(self.val, align="center")
-        t.goto(45, -20)
+        jump_to(0, 40 * h)
+        draw(self, 0, 40 * h, h * 40)
+
         t.hideturtle()
         turtle.done()
 
@@ -73,6 +88,7 @@ def btree_to_list(root):
 
 
 if __name__ == '__main__':
+
     c = list_to_btree([4, -7, -3, None, None, -9, -3, 9, -7, -4, None, 6, None, -6, -6, None, None, 0, 6, 5,
                        None, 9, None, None, -1, -4, None, None, None, -2])
     print(c.height())
