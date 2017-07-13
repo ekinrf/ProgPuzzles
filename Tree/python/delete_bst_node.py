@@ -10,29 +10,6 @@ def del_bst_node(root, tar_key):
             find_leaf(left, False).right = right
             return left
 
-    def find_key_and_del(cur_node, parent):
-        if not cur_node:
-            return False
-        elif cur_node.val < tar_key:
-            if cur_node.right:
-                next_node = cur_node.right
-                if next_node.val == tar_key:
-                    cur_node.right = None
-                    cur_node.right = merge(next_node.left, next_node.right)
-                    return True
-            else:
-                return False, cur_node, parent
-        else:  # >tar_key
-            if cur_node.left:
-                next_node = cur_node.left
-                if next_node.val == tar_key:
-                    cur_node.left = None
-                    cur_node.left = merge(next_node.left, next_node.right)
-                    return True
-            else:
-                return False
-        return find_key_and_del(next_node, cur_node)
-
     def find_leaf(node, left):
         if left:
             subtree = node.left
@@ -48,7 +25,10 @@ def del_bst_node(root, tar_key):
         if root.val == tar_key:
             return merge(root.left, root.right)
         else:
-            find_key_and_del(root, None)
+            if root.val < tar_key:
+                root.right = del_bst_node(root.right, tar_key)
+            else:
+                root.left = del_bst_node(root.left, tar_key)
     return root
 
 
