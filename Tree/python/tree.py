@@ -93,4 +93,5 @@ if __name__ == '__main__':
                        None, 9, None, None, -1, -4, None, None, None, -2])
     print(c.height())
     print(btree_to_list(c))
-    c.visualise()
+    # c.visualise()
+
