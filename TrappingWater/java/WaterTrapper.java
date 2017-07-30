@@ -1,3 +1,4 @@
+import java.util.Comparator;
 import java.util.PriorityQueue;
 
 public class WaterTrapper {
@@ -20,13 +21,21 @@ public class WaterTrapper {
         }
     }
 
+    // Comparator vs CompareTo
+    static class BlockComparator implements Comparator<Block>{
+        @Override
+        public int compare(Block o1, Block o2) {
+            return o1.height - o2.height;
+        }
+    }
+
     public static int trapRainWater(int[][] heightMap) {
 
         int xLen = heightMap.length;
         if(xLen <= 0) return 0;
         int yLen = heightMap[0].length;
         boolean[][] visitedMatrix = new boolean[xLen][yLen]; // default to false
-        PriorityQueue<Block> priorityQueue = new PriorityQueue<>(xLen * yLen); // probably too big
+        PriorityQueue<Block> priorityQueue = new PriorityQueue<>(xLen * yLen, new BlockComparator()); // probably too big
         for (int x = 0; x < xLen; x++)
             for (int y = 0; y < yLen; y++) {
                 if (x == 0 || y == 0 || y == (yLen - 1) || x == (xLen - 1)) {
