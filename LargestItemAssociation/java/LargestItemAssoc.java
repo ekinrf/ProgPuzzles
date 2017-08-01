@@ -46,16 +46,21 @@ public class LargestItemAssoc {
     }
 
     private static String findRoot(String itemName, Map<String, String> itemMap) {
-        String rootName = itemMap.get(itemName);
-        while (rootName != itemName) {
-            itemName = rootName;
-            rootName = itemMap.get(itemName);
+        if(itemMap.containsKey(itemName)){
+            String rootName = itemMap.get(itemName);
+            while (rootName != itemName) {
+                itemName = rootName;
+                rootName = itemMap.get(itemName);
+            }
+            return rootName;
+        } else {
+            return itemName;
         }
-        return rootName;
+
     }
 
     public static void main(String[] args) {
-        String[][] test = new String[][]{{"Item1", "Item2"}, {"Item3", "Item4"}, {"Item4", "Item5"}};
+        String[][] test = new String[][]{{"Item1", "Item2"}, {"Item3", "Item4"}, {"Item4", "Item5"}, {"Item5", "Item1"}};
 
         String [] a = largestItemAssociation(test);
         for(String s : a)

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="PYTHON_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$/../../Array/python" />
+    <content url="file://$MODULE_DIR$/../../EvalDiv/python" />
+    <content url="file://$MODULE_DIR$/../../FractionToDecimal/python" />
+    <content url="file://$MODULE_DIR$/../../Graph/python" />
+    <content url="file://$MODULE_DIR$/../../HuffmanCoding/python" />
+    <content url="file://$MODULE_DIR$/../../IncDelGetRandomO1/python" />
+    <content url="file://$MODULE_DIR$/../../KnapsackProblem/python" />
+    <content url="file://$MODULE_DIR$/../../LongestIncreasingSubseq/python" />
+    <content url="file://$MODULE_DIR$/../../SmallestRange/python" />
+    <content url="file://$MODULE_DIR$/../../StringEditDistance/Python" />
+    <content url="file://$MODULE_DIR$/../../Substring/python" />
+    <content url="file://$MODULE_DIR$/../../Tree/python" />
+    <orderEntry type="jdk" jdkName="Python 3.6.0 (C:\Users\fangren\AppData\Local\Programs\Python\Python36\python.exe)" jdkType="Python SDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
