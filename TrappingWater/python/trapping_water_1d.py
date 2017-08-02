@@ -29,4 +29,41 @@ def trapping_water(heights):
     return water_trapped
 
 
+def trapping_water_alt(heights):
+    if not heights:
+        return 0
+    highest_so_far = heights[0]
+    left_bound = []
+    right_bound = []
+    for h in heights:
+        if highest_so_far < h:
+            highest_so_far = h
+        left_bound.append(highest_so_far)
+    highest_so_far = heights[-1]
+    for h in reversed(heights):
+        if highest_so_far < h:
+            highest_so_far = h
+        right_bound.append(highest_so_far)
+    water_trapped = 0
+    for i, (l, r) in enumerate(zip(left_bound, reversed(right_bound))):
+        water_trapped += min(l, r) - heights[i]
+    return water_trapped
+
+
+def trapping_water_stack(heights):
+    stack = []
+    water_trapped = 0
+    for i, h in enumerate(heights):
+        while stack and heights[stack[-1]] < h:
+            bar_to_fill = stack.pop()
+            if stack:
+                water_trapped += (min(heights[stack[-1]], h) - heights[bar_to_fill]) * (i - stack[-1] - 1)
+        stack.append(i)
+    return water_trapped
+
+
 print(trapping_water([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]))
+print(trapping_water_alt([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1, 3, 2]))
+print(trapping_water_stack([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1, 3, 2]))
+print(trapping_water_stack([4, 2, 3]))
+
