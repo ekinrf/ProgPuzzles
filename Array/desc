@@ -98,3 +98,284 @@ Example 2:
 nums: [1,2,4,8]
 
 Result: [1,2,4,8]
+
+----------------------------------------------------------------------------------------------------------------------------------------
+Closest number
+
+An unsorted array is given and a number is given.
+You need to find the number closest to it. If multiple answers is possible give any one.
+Think about corner cases. I gave O(N) solution.
+Then he asked what if the array is sorted. Expected time complexity is O(logN)
+without using any other class or struct.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+Rotated Array
+https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/
+
+Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
+
+(i.e.,  [0,1,2,4,5,6,7] might become  [4,5,6,7,0,1,2]).
+
+Find the minimum element.
+
+You may assume no duplicate exists in the array.
+
+Example 1:
+
+Input: [3,4,5,1,2]
+Output: 1
+Example 2:
+
+Input: [4,5,6,7,0,1,2]
+Output: 0
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+Find the kth largest element in an unsorted array. Note that it is the kth largest element in the sorted order, not the kth distinct element.
+
+Example 1:
+
+Input: [3,2,1,5,6,4] and k = 2
+Output: 5
+Example 2:
+
+Input: [3,2,3,1,2,4,5,5,6] and k = 4
+Output: 4
+Note:
+You may assume k is always valid, 1 ≤ k ≤ array's length.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+76. Minimum Window Substring
+
+Given a string S and a string T, find the minimum window in S which will contain all the characters in T in complexity O(n).
+
+Example:
+
+Input: S = "ADOBECODEBANC", T = "ABC"
+Output: "BANC"
+Note:
+
+If there is no such window in S that covers all characters in T, return the empty string "".
+If there is such window, you are guaranteed that there will always be only one unique minimum window in S.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+416. Partition Equal Subset Sum
+
+Given a non-empty array containing only positive integers, find if the array can be partitioned into two subsets such that the sum of elements in both subsets is equal.
+
+Note:
+
+Each of the array element will not exceed 100.
+The array size will not exceed 200.
+
+
+Example 1:
+
+Input: [1, 5, 11, 5]
+
+Output: true
+
+Explanation: The array can be partitioned as [1, 5, 5] and [11].
+
+
+Example 2:
+
+Input: [1, 2, 3, 5]
+
+Output: false
+
+----------------------------------------------------------------------------------------------------------------------------------------
+739 Temperature
+Given a list of daily temperatures T, return a list such that, for each day in the input, tells you how many days you would have to wait until a warmer temperature. If there is no future day for which this is possible, put 0 instead.
+
+For example, given the list of temperatures T = [73, 74, 75, 71, 69, 72, 76, 73], your output should be [1, 1, 4, 2, 1, 1, 0, 0].
+
+Note: The length of temperatures will be in the range [1, 30000]. Each temperature will be an integer in the range [30, 100].
+
+----------------------------------------------------------------------------------------------------------------------------------------
+496
+You are given two arrays (without duplicates) nums1 and nums2 where nums1’s elements are subset of nums2. Find all the next greater numbers for nums1's elements in the corresponding places of nums2.
+
+The Next Greater Number of a number x in nums1 is the first greater number to its right in nums2. If it does not exist, output -1 for this number.
+
+Example 1:
+Input: nums1 = [4,1,2], nums2 = [1,3,4,2].
+Output: [-1,3,-1]
+Explanation:
+    For number 4 in the first array, you cannot find the next greater number for it in the second array, so output -1.
+    For number 1 in the first array, the next greater number for it in the second array is 3.
+    For number 2 in the first array, there is no next greater number for it in the second array, so output -1.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+503 Given a circular array (the next element of the last element is the first element of the array), print the Next Greater Number for every element. The Next Greater Number of a number x is the first greater number to its traversing-order next in the array, which means you could search circularly to find its next greater number. If it doesn't exist, output -1 for this number.
+
+Example 1:
+Input: [1,2,1]
+Output: [2,-1,2]
+Explanation: The first 1's next greater number is 2;
+The number 2 can't find next greater number;
+The second 1's next greater number needs to search circularly, which is also 2.
+Note: The length of given array won't exceed 10000.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+560. Subarray Sum Equals K
+
+Given an array of integers and an integer k, you need to find the total number of continuous subarrays whose sum equals to k.
+
+Example 1:
+
+Input:nums = [1,1,1], k = 2
+Output: 2
+
+
+Constraints:
+
+The length of the array is in range [1, 20,000].
+The range of numbers in the array is [-1000, 1000] and the range of the integer k is [-1e7, 1e7].
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+array integer output array, each element is the multiplication of all the other elem
+
+
+----------------------------------------------------------------------------------------------------------------------------------------
+621
+
+You are given a char array representing tasks CPU need to do. It contains capital letters A to Z where each letter represents a different task. Tasks could be done without the original order of the array. Each task is done in one unit of time. For each unit of time, the CPU could complete either one task or just be idle.
+
+However, there is a non-negative integer n that represents the cooldown period between two same tasks (the same letter in the array), that is that there must be at least n units of time between any two same tasks.
+
+You need to return the least number of units of times that the CPU will take to finish all the given tasks.
+
+
+
+Example 1:
+
+Input: tasks = ["A","A","A","B","B","B"], n = 2
+Output: 8
+Explanation:
+A -> B -> idle -> A -> B -> idle -> A -> B
+There is at least 2 units of time between any two same tasks.
+Example 2:
+
+Input: tasks = ["A","A","A","B","B","B"], n = 0
+Output: 6
+Explanation: On this case any permutation of size 6 would work since n = 0.
+["A","A","A","B","B","B"]
+["A","B","A","B","A","B"]
+["B","B","B","A","A","A"]
+...
+And so on.
+Example 3:
+
+Input: tasks = ["A","A","A","A","A","A","B","C","D","E","F","G"], n = 2
+Output: 16
+Explanation:
+One possible solution is
+A -> B -> C -> A -> D -> E -> A -> F -> G -> A -> idle -> idle -> A -> idle -> idle -> A
+
+----------------------------------------------------------------------------------------------------------------------------------------
+162. Find Peak Element
+
+A peak element is an element that is greater than its neighbors.
+
+Given an input array nums, where nums[i] ≠ nums[i+1], find a peak element and return its index.
+
+The array may contain multiple peaks, in that case return the index to any one of the peaks is fine.
+
+You may imagine that nums[-1] = nums[n] = -∞.
+
+Example 1:
+
+Input: nums = [1,2,3,1]
+Output: 2
+Explanation: 3 is a peak element and your function should return the index number 2.
+Example 2:
+
+Input: nums = [1,2,1,3,5,6,4]
+Output: 1 or 5
+Explanation: Your function can return either index number 1 where the peak element is 2,
+             or index number 5 where the peak element is 6.
+Follow up: Your solution should be in logarithmic complexity.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+1060 Missing Element In Sorted Array
+
+Given a sorted array A of unique numbers, find the K-th missing number starting from the leftmost number of the array.
+
+Example 1: Input: A = [4,7,9,10], K = 1 Output: 5 Explanation: The first missing number is 5.
+
+Example 2: Input: A = [4,7,9,10], K = 3 Output: 8 Explanation: The missing numbers are [5,6,8,…], hence the third missing number is 8. Example 3:
+
+Input: A = [1,2,4], K = 3 Output: 6 Explanation: The missing numbers are [3,5,6,7,…], hence the third missing number is 6.
+
+Note: 1 <= A.length <= 50000 1 <= A[i] <= 1e7 1 <= K <= 1e8
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+Answer a Query
+Imagine a length-N array of booleans, initially all false. Over time, some values are set to true, and at various points in time you would like to find the location of the nearest true to the right of given indices.
+You will receive Q queries, each of which has a type and a value. SET queries have type = 1 and GET queries have type = 2.
+When you receive a SET query, the value of the query denotes an index in the array that is set to true. Note that these indices start at 1. When you receive a GET query, you must return the smallest index that contains a true value that is greater than or equal to the given index, or -1 if no such index exists.
+Signature
+int[] answerQueries(ArrayList<Query> queries, int N)
+Input
+A list of Q queries, formatted as [type, index] where type is either 1 or 2, and index is < N
+1 <= N <= 1,000,000,000
+1 <= Q <= 500,000
+Output
+Return an array containing the results of all GET queries. The result of queries[i] is the smallest index that contains a true value that is greater than or equal to i, or -1 if no index satisfies those conditions.
+Example
+N = 5
+Q = 5
+queries = [[2, 3], [1, 2], [2, 1], [2, 3], [2, 2]]
+output = [-1, 2, -1, 2]
+The initial state of the array is [false, false, false, false, false].
+The first query is GET 3, but no values in the array are true, so the answer is -1.
+The second query is SET 2, so the value at index 2 is set to true.
+The new state of the array is [false, true, false, false, false].
+The third query is GET 1, and the index of the true value nearest to 1 (to the right) is 2.
+The fourth query is GET 3, but no values to the right of index 3 are true.
+The fifth query is GET 2, and the value at index 2 is true
+
+----------------------------------------------------------------------------------------------------------------------------------------
+Above-Average Subarrays
+You are given an array A containing N integers. Your task is to find all subarrays whose average sum is greater than the average sum of the remaining array elements. You must return the start and end index of each subarray in sorted order.
+A subarray that starts at position L1 and ends at position R1 comes before a subarray that starts at L2 and ends at R2 if L1 < L2, or if L1 = L2 and R1 ≤ R2.
+Note that we'll define the average sum of an empty array to be 0, and we'll define the indicies of the array (for the purpose of output) to be 1 through N. A subarray that contains a single element will have L1 = L2.
+Signature
+Subarray[] aboveAverageSubarrays(int[] A)
+Input
+1 ≤ N ≤ 2,000
+1 ≤ A[i] ≤ 1,000,000
+Output
+A Subarray is an object with two integer fields, left and right, defining the range that a given subarray covers. Return a list of all above-average subarrays sorted as explained above.
+Example 1
+A = [3, 4, 2]
+output = [[1, 2], [1, 3], [2, 2]]
+The above-average subarrays are [3, 4], [3, 4, 2], and [4].
+
+----------------------------------------------------------------------------------------------------------------------------------------
+find pos
+Queue Removals
+You're given a list of n integers arr, which represent elements in a queue (in order from front to back). You're also given an integer x, and must perform x iterations of the following 3-step process:
+Pop x elements from the front of queue (or, if it contains fewer than x elements, pop all of them)
+Of the elements that were popped, find the one with the largest value (if there are multiple such elements, take the one which had been popped the earliest), and remove it
+For each one of the remaining elements that were popped (in the order they had been popped), decrement its value by 1 if it's positive (otherwise, if its value is 0, then it's left unchanged), and then push it back onto the queue
+Compute a list of x integers output, the ith of which is the 1-based index in the original array of the element which had been removed in step 2 during the ith iteration.
+Signature
+int[] findPositions(int[] arr, int x)
+Input
+x is in the range [1, 316].
+n is in the range [x, x*x].
+Each value arr[i] is in the range [1, x].
+Output
+Return a list of x integers output, as described above.
+Example
+n = 6
+arr = [1, 2, 2, 3, 4, 5]
+x = 5
+output = [5, 6, 4, 1, 2]

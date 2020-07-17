@@ -1,5 +1,4 @@
 from collections import deque
-import turtle
 
 class BinaryTreeNode(object):
     def __init__(self, x):
@@ -16,6 +15,8 @@ class BinaryTreeNode(object):
         return max(1, left_h, right_h)
 
     def visualise(self):
+        import turtle
+
         def jump_to(x, y):
             t.penup()
             t.goto(x, y)
@@ -87,11 +88,30 @@ def btree_to_list(root):
     return [None if node is None else node.val for node in nodes]
 
 
+def print_bt_root_to_leaf_path(root):
+    def _print_rec(node, path):
+        path.append(node.val)
+        if not node:
+            return
+        elif node.left or node.right:
+            if node.left:
+                _print_rec(node.left, path)
+                path.pop()
+            if node.right:
+                _print_rec(node.right, path)
+                # path.pop()
+        else:
+            print(path)
+
+    _print_rec(root, [])
+
+
 if __name__ == '__main__':
 
     c = list_to_btree([4, -7, -3, None, None, -9, -3, 9, -7, -4, None, 6, None, -6, -6, None, None, 0, 6, 5,
                        None, 9, None, None, -1, -4, None, None, None, -2])
     print(c.height())
     print(btree_to_list(c))
-    # c.visualise()
+    c.visualise()
 
+    print_bt_root_to_leaf_path(c)

@@ -34,5 +34,5 @@ def wiggle_sort_2(nums):
     return nums
 
 
-print(wiggle_sort_2([1, 2, 2, 1, 2, 1, 1, 1, 1, 2, 2, 2]))
-print(wiggle_sort_2([1, 2, 2, 1, 2, 1, 1, 1, 2, 2, 1, 2, 1, 2, 1, 1, 2]))
+print(wiggle_sort([1, 2, 2, 1, 2, 1, 1, 1, 1, 2, 2, 2]))
+print(wiggle_sort([1, 2, 2, 1, 2, 1, 1, 1, 2, 2, 1, 2, 1, 2, 1, 1, 2]))
