@@ -21,7 +21,8 @@ def insert_intervals(intervals: List[List[int]], new_interval: List[int]):
 
     return res
 
-intervals = [[1,2],[3,5],[6,7],[8,10],[12,16]]
+
+intervals = [[1, 2], [3, 5], [6, 7], [8, 10], [12, 16]]
 # intervals = [[0,2],[3,3],[6,11]]
 newInterval = [9, 15]
 print(insert_intervals(intervals, newInterval))
@@ -42,10 +43,13 @@ def merge_intervals(intervals: List[List[int]]):
     return res
 
 
-intervals = [[1,3],[2,6],[8,10],[15,18]]
+intervals = [[1, 3], [2, 6], [8, 10], [15, 18]]
 print(merge_intervals(intervals))
+print('----')
 
 
+# https://leetcode.com/problems/interval-list-intersections/
+# 986
 def intersect_intervals(a, b):
     a_idx = b_idx = 0
     res = []
@@ -65,3 +69,22 @@ def intersect_intervals(a, b):
     return res
 
 
+# sorted by end time
+# start traverse, check the neighours if overlapping, keep only 1
+def min_remove_to_make_non_overlapping(intervals: List[List[int]]):
+    # sorted by end time
+    sorted_i_by_end = sorted(intervals, key=lambda x: x[1])
+    i, j = 0, 1
+    removed = 0
+    while j < len(sorted_i_by_end):
+        if sorted_i_by_end[i][1] > sorted_i_by_end[j][0]:
+            removed += 1
+        else:
+            i = j
+        j += 1
+    return removed
+
+
+print(min_remove_to_make_non_overlapping([[1, 2], [1, 2], [1, 2]]))
+print(min_remove_to_make_non_overlapping([[1, 2], [2, 3], [3, 4], [1, 3]]))
+print(min_remove_to_make_non_overlapping([[0, 2], [1, 3], [2, 4], [3, 5], [4, 6]]))

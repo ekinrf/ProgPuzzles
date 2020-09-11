@@ -42,3 +42,108 @@ Example 6:
 
 Input: "/a//b////c/d//././/.."
 Output: "/a/b/c"
+
+----------------------------------------------------------------------------------------------------------------------------
+394
+Given an encoded string, return its decoded string.
+
+The encoding rule is: k[encoded_string], where the encoded_string inside the square brackets is being repeated exactly k times. Note that k is guaranteed to be a positive integer.
+
+You may assume that the input string is always valid; No extra white spaces, square brackets are well-formed, etc.
+
+Furthermore, you may assume that the original data does not contain any digits and that digits are only for those repeat numbers, k. For example, there won't be input like 3a or 2[4].
+
+
+
+Example 1:
+
+Input: s = "3[a]2[bc]"
+Output: "aaabcbc"
+Example 2:
+
+Input: s = "3[a2[c]]"
+Output: "accaccacc"
+Example 3:
+
+Input: s = "2[abc]3[cd]ef"
+Output: "abcabccdcdcdef"
+Example 4:
+
+Input: s = "abc3[cd]xyz"
+Output: "abccdcdcdxyz"
+
+----------------------------------------------------------------------------------------------------------------------------
+
+17. Letter Combinations of a Phone Number
+
+Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent.
+
+A mapping of digit to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.
+
+
+
+Example:
+
+Input: "23"
+Output: ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"].
+Note:
+
+Although the above answer is in lexicographical order, your answer could be in any order you want.
+
+----------------------------------------------------------------------------------------------------------------------------
+
+1047. Remove All Adjacent Duplicates In String
+
+Given a string S of lowercase letters, a duplicate removal consists of choosing two adjacent and equal letters, and removing them.
+
+We repeatedly make duplicate removals on S until we no longer can.
+
+Return the final string after all such duplicate removals have been made.  It is guaranteed the answer is unique.
+
+
+
+Example 1:
+
+Input: "abbaca"
+Output: "ca"
+Explanation:
+For example, in "abbaca" we could remove "bb" since the letters are adjacent and equal, and this is the only possible move.  The result of this move is that the string is "aaca", of which only "aa" is possible, so the final string is "ca".
+
+
+Note:
+
+1 <= S.length <= 20000
+S consists only of English lowercase letters.
+
+----------------------------------------------------------------------------------------------------------------------------
+
+
+In an alien language, surprisingly they also use english lowercase letters, but possibly in a different order. The order of the alphabet is some permutation of lowercase letters.
+
+Given a sequence of words written in the alien language, and the order of the alphabet, return true if and only if the given words are sorted lexicographicaly in this alien language.
+
+
+
+Example 1:
+
+Input: words = ["hello","leetcode"], order = "hlabcdefgijkmnopqrstuvwxyz"
+Output: true
+Explanation: As 'h' comes before 'l' in this language, then the sequence is sorted.
+Example 2:
+
+Input: words = ["word","world","row"], order = "worldabcefghijkmnpqstuvxyz"
+Output: false
+Explanation: As 'd' comes after 'l' in this language, then words[0] > words[1], hence the sequence is unsorted.
+Example 3:
+
+Input: words = ["apple","app"], order = "abcdefghijklmnopqrstuvwxyz"
+Output: false
+Explanation: The first three characters "app" match, and the second string is shorter (in size.) According to lexicographical rules "apple" > "app", because 'l' > '∅', where '∅' is defined as the blank character which is less than any other character (More info).
+
+
+Constraints:
+
+1 <= words.length <= 100
+1 <= words[i].length <= 20
+order.length == 26
+All characters in words[i] and order are English lowercase letters.

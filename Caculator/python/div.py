@@ -1,4 +1,7 @@
 # 29. Divide Two Integers
+# Binary Search: Give dividend / divisor = 1
+# if divisor + divisor > dividend and divisor < dividend
+# we keep grow the real divisor by timing 2 (adding itself)
 def div(dividend: int, divisor: int) -> int:
     def _div_rec(dividend, divisor):
         if divisor > dividend:
@@ -23,6 +26,26 @@ def div(dividend: int, divisor: int) -> int:
     return res if equal_sign else -res
 
 
+# Same idea but use less space
+def div_2(dividend, divisor):
+    ret = 0
+    sign = (dividend > 0) == (divisor > 0)
+    dividend, divisor = abs(dividend), abs(divisor)
+    while dividend >= divisor:
+        divisor_to_try, multiplier = divisor, 1
+        while dividend >= divisor_to_try:
+            dividend -= divisor_to_try
+            ret += multiplier
+            divisor_to_try += divisor_to_try
+            multiplier += multiplier
+    return ret if sign else -ret
+
+
 print(div(7, -3))
+print(div_2(7, -3))
+
 print(div(-1, -1))
+print(div_2(-1, -1))
+
 print(div(-2147483648, -1))
+print(div_2(-2147483648, -1))

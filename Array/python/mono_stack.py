@@ -53,3 +53,31 @@ def next_gt_number_circular(nums):
 
 
 print(next_gt_number_circular([1, 2, 1]))
+
+
+# use mono stack for find first min value from both left and right;
+# then another traversal to find max area
+# store index in the stack so we can calculate the area
+def largest_rect_in_hist(nums):
+    first_mins_from_right = [-1] * len(nums)
+    stack = []
+    for i, n in reversed(list(enumerate(nums))):
+        while stack and nums[stack[-1]] >= n:
+            stack.pop()
+        # set to a non-exist index to distinguish a min number exist in the array or not
+        # affects how we calculate the area later
+        first_mins_from_right[i] = stack[-1] if stack else len(nums)
+        stack.append(i)
+
+    stack = []
+    max_area = 0
+    for i, n in enumerate(nums):
+        while stack and nums[stack[-1]] >= n:
+            stack.pop()
+        left_bound = stack[-1] if stack else - 1
+        stack.append(i)
+        max_area = max(nums[i] * (first_mins_from_right[i] - left_bound - 1), max_area)
+    return max_area
+
+
+print(largest_rect_in_hist([6, 2, 5, 4, 5, 1, 6]))

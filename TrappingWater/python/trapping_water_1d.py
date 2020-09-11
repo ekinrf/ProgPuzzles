@@ -62,8 +62,28 @@ def trapping_water_stack(heights):
     return water_trapped
 
 
+def trap_water(heights):
+    l_max = r_max = 0
+    i, j = 0, len(heights) - 1
+    res = 0
+    while i < j:
+        l_max = max(l_max, heights[i])
+        r_max = max(r_max, heights[j])
+        if l_max < r_max:
+            i += 1
+            res += max(0, l_max - heights[i])
+        else:
+            j -= 1
+            res += max(0, r_max - heights[j])
+    return res
+
+
 print(trapping_water([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]))
+print(trapping_water_alt([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]))
 print(trapping_water_alt([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1, 3, 2]))
 print(trapping_water_stack([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1, 3, 2]))
 print(trapping_water_stack([4, 2, 3]))
 
+print(trap_water([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]))
+print(trap_water([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1, 3, 2]))
+print(trap_water([4, 2, 3]))

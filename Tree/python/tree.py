@@ -1,10 +1,11 @@
 from collections import deque
 
+
 class BinaryTreeNode(object):
     def __init__(self, x):
         self.val = x
-        self.left = None
-        self.right = None
+        self.left: BinaryTreeNode = None
+        self.right: BinaryTreeNode = None
 
     def height(self):
         left_h = right_h = 0
@@ -88,6 +89,36 @@ def btree_to_list(root):
     return [None if node is None else node.val for node in nodes]
 
 
+def serialize(root) -> str:
+    nodes = deque([root])
+    res = []
+    while nodes:
+        node = nodes.popleft()
+        res.append(node)
+        if node:
+            nodes.append(node.left)
+            nodes.append(node.right)
+    return ' '.join([n.val if n else None for n in res])
+
+
+def deserialize(data: str):
+    nodes = deque(BinaryTreeNode(node_str) if node_str != 'None' else None for node_str in data.split(' '))
+    root = nodes.popleft()
+    children_queue = deque([root])
+    while nodes:
+        node = children_queue.popleft()
+        if nodes: # add left
+            node.left = nodes.popleft()
+            if node.left:
+                children_queue.append(node.left)
+        if nodes:
+            node.right = nodes.popleft()
+            if node.right:
+                children_queue.append(node.right)
+    return root
+
+
+
 def print_bt_root_to_leaf_path(root):
     def _print_rec(node, path):
         path.append(node.val)
@@ -107,7 +138,6 @@ def print_bt_root_to_leaf_path(root):
 
 
 if __name__ == '__main__':
-
     c = list_to_btree([4, -7, -3, None, None, -9, -3, 9, -7, -4, None, 6, None, -6, -6, None, None, 0, 6, 5,
                        None, 9, None, None, -1, -4, None, None, None, -2])
     print(c.height())
